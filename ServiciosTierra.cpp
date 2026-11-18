@@ -10,6 +10,8 @@
 #include "Traza.h"
 #include "Vigilante.h"
 
+using namespace std;
+
 ServiciosTierra::ServiciosTierra(int capacidad, Estadisticas& estadisticas,
                                  Traza& traza, Vigilante& vigilante)
     : capacidad_(capacidad),
@@ -17,37 +19,37 @@ ServiciosTierra::ServiciosTierra(int capacidad, Estadisticas& estadisticas,
       traza_(traza),
       vigilante_(vigilante) {
     if (capacidad_ <= 0) {
-        throw std::invalid_argument("La capacidad de la cola debe ser mayor que cero");
+        throw invalid_argument("La capacidad de la cola debe ser mayor que cero");
     }
 }
 
 void ServiciosTierra::encargarYEsperarServicios(int idAvion) {
-    using reloj = std::chrono::steady_clock;
+    using reloj = chrono::steady_clock;
     const auto inicioEspera = reloj::now();
 
-    const std::array<Servicio, 3> servicios{{
+    const array<Servicio, 3> servicios{{
         {idAvion, "combustible", 9},
         {idAvion, "limpieza", 3},
         {idAvion, "catering", 3}
     }};
 
     {
-        std::unique_lock<std::mutex> lock(mutex_);
+        unique_lock<mutex> lock(mutex_);
         pendientesPorAvion_[idAvion] = 3;
 
         for (const Servicio& servicio : servicios) {
             hayEspacio_.wait(lock, [this] {
-                return cerrada_ || cola_.size() < static_cast<std::size_t>(capacidad_);
+                return cerrada_ || cola_.size() < static_cast<size_t>(capacidad_);
             });
 
             if (cerrada_) {
                 pendientesPorAvion_.erase(idAvion);
-                throw std::logic_error("La cola de servicios está cerrada");
+                throw logic_error("La cola de servicios está cerrada");
             }
 
             cola_.push(servicio);
-            traza_.evento("avion " + std::to_string(idAvion),
-                          std::string("solicita ") + servicio.nombre);
+            traza_.evento("avion " + to_string(idAvion),
+                          string("solicita ") + servicio.nombre);
             hayTrabajo_.notify_one();
         }
 
@@ -61,7 +63,7 @@ void ServiciosTierra::encargarYEsperarServicios(int idAvion) {
 
     estadisticas_.registrarEspera(
         "avion (servicios)",
-        std::chrono::duration_cast<std::chrono::milliseconds>(
+        chrono::duration_cast<chrono::milliseconds>(
             reloj::now() - inicioEspera)
     );
 }
@@ -71,7 +73,7 @@ void ServiciosTierra::ejecutarOperario() {
         Servicio servicio{};
 
         {
-            std::unique_lock<std::mutex> lock(mutex_);
+            unique_lock<mutex> lock(mutex_);
             hayTrabajo_.wait(lock, [this] {
                 return cerrada_ || !cola_.empty();
             });
@@ -86,14 +88,14 @@ void ServiciosTierra::ejecutarOperario() {
         }
 
         traza_.evento("operario",
-                      std::string("inicia ") + servicio.nombre +
-                      " del avion " + std::to_string(servicio.idAvion));
+                      string("inicia ") + servicio.nombre +
+                      " del avion " + to_string(servicio.idAvion));
 
-        // Simula la duración del servicio indicada en el enunciado.
-        std::this_thread::sleep_for(std::chrono::milliseconds(servicio.duracionMs));
+        // Simula la duracion del servicio indicada en el enunciado.
+        this_thread::sleep_for(chrono::milliseconds(servicio.duracionMs));
 
         {
-            std::lock_guard<std::mutex> lock(mutex_);
+            lock_guard<mutex> lock(mutex_);
             auto it = pendientesPorAvion_.find(servicio.idAvion);
             if (it != pendientesPorAvion_.end() && it->second > 0) {
                 --it->second;
@@ -107,14 +109,14 @@ void ServiciosTierra::ejecutarOperario() {
         vigilante_.progreso();
 
         traza_.evento("operario",
-                      std::string("termina ") + servicio.nombre +
-                      " del avion " + std::to_string(servicio.idAvion));
+                      string("termina ") + servicio.nombre +
+                      " del avion " + to_string(servicio.idAvion));
     }
 }
 
 void ServiciosTierra::cerrarCola() {
     {
-        std::lock_guard<std::mutex> lock(mutex_);
+        lock_guard<mutex> lock(mutex_);
         cerrada_ = true;
     }
     hayTrabajo_.notify_all();
