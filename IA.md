@@ -9,7 +9,8 @@ Este documento registra las consultas de IA relacionadas con la parte `Servicios
 - **Fecha:** 18/11/2026
 - **Miembro:** completar con el nombre del miembro que realizó la consulta.
 - **Herramienta:** ChatGPT (OpenAI).
-- **Prompts:**
+- **Prompts para ServiciosTierra.h:**
+  
 
 
 
