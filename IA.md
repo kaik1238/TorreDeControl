@@ -13,7 +13,7 @@ Este documento registra las consultas de IA relacionadas con la parte `Servicios
 -  **prompt exacto:** haz el archivo serviciostierra.h del caso 1. Define la clase con los atributos y metodos necesarios para gestionar la cola de servicios de capacidad limitada, controlar los servicios pendientes de cada avion y permitir que los operarios atiendan las peticiones por orden de llegada. Incluye los mecanismos de sincronizacion necesarios y declara el metodo para cerrar la cola respeta los requisitos generales del proyecto y deja la implementacion de los metodos para el archivo cpp
 
 - **Prompts para ServiciosTierra.cpp:**
--**prompt exacto:**: haz la clase serviciostierra.cpp del caso 1. Siguiendo el enunciado la clase debe gestionar la cola de servicios de capacidad limitada y mantener el orden de llegada de las peticiones, cada avion solicita combustible limpieza y catering y debe esperar hasta que se hayan realizado los tres servicios . Los operarios deben atender las peticiones mas antiguas y terminar cuando la cola este cerrada y vacia. Implementa la sincronizacion necesaria siguiendo lo que dice del trabajo registra las esperas de los aviones y suma una operacion cada vez que se complete un servicio.
+- **prompt exacto:**: haz la clase serviciostierra.cpp del caso 1. Siguiendo el enunciado la clase debe gestionar la cola de servicios de capacidad limitada y mantener el orden de llegada de las peticiones, cada avion solicita combustible limpieza y catering y debe esperar hasta que se hayan realizado los tres servicios . Los operarios deben atender las peticiones mas antiguas y terminar cuando la cola este cerrada y vacia. Implementa la sincronizacion necesaria siguiendo lo que dice del trabajo registra las esperas de los aviones y suma una operacion cada vez que se complete un servicio.
 
 
 - **Respuesta obtenida (resumen relevante):** se propuso una clase `ServiciosTierra` con una cola FIFO acotada, un contador de servicios pendientes por avión, una condición para esperar espacio, otra para esperar trabajo y otra para esperar la finalización de los servicios. Se prepararon los ficheros `ServiciosTierra.h` y `ServiciosTierra.cpp`, además de una guía de integración.
@@ -27,7 +27,8 @@ Este documento registra las consultas de IA relacionadas con la parte `Servicios
 - **Fecha:** 18/11/2026
 - **Miembro:** completar con el nombre del miembro que realizó la consulta.
 - **Herramienta:** ChatGPT (OpenAI).
-- **Prompts:**
+- **Prompt exacto:**
+- Ayúdame a elaborar el archivo DISENO.md del Caso 1 siguiendo el apartado 1.3 de documentación del enunciado. Debe incluir una tabla de predicados de cada monitor con las columnas: operación, espera mientras… y quién avisa. Utiliza las clases y los mecanismos de sincronización que aparecen en el código real del proyecto. Explica las condiciones que debe cumplirse para que cada operación pueda continuar y qué hilo o método notifica cuando esa condición cambia. No inventes métodos, variables ni mecanismos de sincronización que no estén implementados. Si falta información, indícalo.
 
 
 
