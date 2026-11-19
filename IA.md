@@ -10,8 +10,7 @@ Este documento registra las consultas de IA relacionadas con la parte `Servicios
 - **Miembro:** completar con el nombre del miembro que realizó la consulta.
 - **Herramienta:** ChatGPT (OpenAI).
 - **Prompts para ServiciosTierra.h:**
-  
-
+- **Prompts para ServiciosTierra.cpp:**
 
 
 
