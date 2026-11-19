@@ -10,12 +10,7 @@ Este documento registra las consultas de IA relacionadas con la parte `Servicios
 - **Miembro:** completar con el nombre del miembro que realizó la consulta.
 - **Herramienta:** ChatGPT (OpenAI).
 - **Prompts para ServiciosTierra.h:**
-- prompt 1:
-- prompt 2:
-- prompt 3:
-
-
-
+- prompt exacto: quiero entender la teoria necesaria para programar la clase serviciostierra del caso 1 explicame que son los mutex las variables de condicion las colas fifo y el problema productor consumidor y ponme ejemplos relacionados con los aviones y los operarios no me des directamente el codigo quiero entender los conceptos para poder programarlo yo
 
 - **Prompts para ServiciosTierra.cpp:**
 - prompt 1:
