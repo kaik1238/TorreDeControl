@@ -10,16 +10,10 @@ Este documento registra las consultas de IA relacionadas con la parte `Servicios
 - **Miembro:** completar con el nombre del miembro que realizó la consulta.
 - **Herramienta:** ChatGPT (OpenAI).
 - **Prompts para ServiciosTierra.h:**
-- **prompt exacto:** quiero entender la teoria necesaria para programar la clase serviciostierra explicame que son los mutex las variables de condicion las colas fifo y el problema productor consumidor y ponme ejemplos relacionados con los aviones y los operarios no me des directamente el codigo quiero entender los conceptos para poder programarlo yo
+- **prompt exacto:** haz el archivo serviciostierra.h del caso 1. Define la clase con los atributos y metodos necesarios para gestionar la cola de servicios de capacidad limitada, controlar los servicios pendientes de cada avion y permitir que los operarios atiendan las peticiones por orden de llegada. Incluye los mecanismos de sincronizacion necesarios y declara el metodo para cerrar la cola respeta los requisitos generales del proyecto y deja la implementacion de los metodos para el archivo cpp
 
 - **Prompts para ServiciosTierra.cpp:**
-- prompt 1:
-- prompt 2:
-- prompt 3:
-
-
-
-
+-**prompt exacto:**: haz la clase serviciostierra.cpp del caso 1. Siguiendo el enunciado la clase debe gestionar la cola de servicios de capacidad limitada y mantener el orden de llegada de las peticiones, cada avion solicita combustible limpieza y catering y debe esperar hasta que se hayan realizado los tres servicios . Los operarios deben atender las peticiones mas antiguas y terminar cuando la cola este cerrada y vacia. Implementa la sincronizacion necesaria siguiendo lo que dice del trabajo registra las esperas de los aviones y suma una operacion cada vez que se complete un servicio.
 
 
 - **Respuesta obtenida (resumen relevante):** se propuso una clase `ServiciosTierra` con una cola FIFO acotada, un contador de servicios pendientes por avión, una condición para esperar espacio, otra para esperar trabajo y otra para esperar la finalización de los servicios. Se prepararon los ficheros `ServiciosTierra.h` y `ServiciosTierra.cpp`, además de una guía de integración.
