@@ -18,9 +18,9 @@ Este documento registra las consultas de IA relacionadas con la parte `Servicios
 
 
 - **Prompts para ServiciosTierra.cpp:**
--prompt 1:
--prompt 2:
--prompt 3:
+- prompt 1:
+- prompt 2:
+- prompt 3:
 
 
 
