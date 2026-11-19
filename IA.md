@@ -9,7 +9,14 @@ Este documento registra las consultas de IA relacionadas con la parte `Servicios
 - **Fecha:** 18/11/2026
 - **Miembro:** completar con el nombre del miembro que realizó la consulta.
 - **Herramienta:** ChatGPT (OpenAI).
-- **Prompt exacto:** «hazme la clase serviciostierra.h y serviciostierra.cpp del caso 1 siguiendo el enunciado que gestione la cola de servicios de los aviones y que los operarios atiendan los servicios por orden de llegada y que cada avion espere hasta que tenga los tres servicios terminados utiliza mutex y condition_variable para sincronizarlo y explicame como conectarlo con el main»
+- **Prompts:**
+
+
+
+
+
+
+
 - **Respuesta obtenida (resumen relevante):** se propuso una clase `ServiciosTierra` con una cola FIFO acotada, un contador de servicios pendientes por avión, una condición para esperar espacio, otra para esperar trabajo y otra para esperar la finalización de los servicios. Se prepararon los ficheros `ServiciosTierra.h` y `ServiciosTierra.cpp`, además de una guía de integración.
 - **Qué se incorporó:** la estructura general de la cola acotada, el uso de `condition_variable` con predicados, el seguimiento de servicios pendientes por avión y el cierre de la cola.
 - **Qué se debe revisar o adaptar:** las firmas de `Estadisticas`, `Traza` y `Vigilante` deben comprobarse contra las clases auxiliares reales del proyecto base. También hay que compilar con el `CMakeLists.txt` del profesor, comprobar los avisos de compilación y probar el cierre y la ejecución concurrente con varios aviones y operarios. La implementación no debe darse por validada hasta pasar esas pruebas.
