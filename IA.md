@@ -28,7 +28,10 @@ Este documento registra las consultas de IA relacionadas con la parte `Servicios
 - **Fecha:** 18/11/2026
 - **Miembro:** completar con el nombre del miembro que realizó la consulta.
 - **Herramienta:** ChatGPT (OpenAI).
-- **Prompt exacto:** «preparame la documentacion del caso 1 siguiendo el enunciado necesito el diseno.md con la tabla de predicados de los monitores el experimentos.md con la prediccion del experimento de comparar 1 puerta con 8 puertas y el ia.md para registrar el uso de inteligencia artificial deja pendientes los resultados de las pruebas porque aun no hemos ejecutado el programa»
+- **Prompts:**
+
+
+
 - **Respuesta obtenida (resumen relevante):** se preparó un paquete con `ServiciosTierra.h`, `ServiciosTierra.cpp`, `DISENO.md`, `EXPERIMENTOS.md` e `IA.md`, basándose en el enunciado del Caso 1.
 - **Qué se incorporó:** una primera tabla de predicados para el monitor de `ServiciosTierra`, una predicción razonada para comparar `--puertas 1` y `--puertas 8`, y el registro de las consultas de IA.
 - **Qué se descartó o dejó pendiente:** no se inventaron resultados de ejecución, estadísticas, mediciones de competición, nombres de miembros ni hashes de commits. Los campos pendientes deben completarse con datos reales del equipo. Las filas de `TorreControl` y panel deben revisarse con la implementación final.
