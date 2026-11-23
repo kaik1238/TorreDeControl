@@ -4,6 +4,8 @@
 #include <thread>
 #include <chrono>
 
+using namespace std;
+
 TorreControl::TorreControl(const Config& config, int num_aviones)
     : operaciones_(0),
       modo_carrera_(config.fallo("carrera")),
@@ -15,10 +17,12 @@ TorreControl::TorreControl(const Config& config, int num_aviones)
 void TorreControl::ejecutarPantalla(int id_pantalla) {
     while (!cerrado_) {
         {
-            std::shared_lock<shared_mutex> lock(mtx_panel_);
+            shared_lock<shared_mutex> lock(mtx_panel_);
+
             volatile size_t total_vuelos = estados_aviones_.size();
             (void)total_vuelos;
         }
+
         this_thread::sleep_for(chrono::milliseconds(1));
     }
 }
@@ -28,10 +32,12 @@ void TorreControl::ejecutarOperadorTorre() {
 
     while (!cerrado_) {
         this_thread::sleep_for(chrono::milliseconds(30));
+
         if (cerrado_) break;
 
         string aviso = "Aviso oficial de torre #" + to_string(contador_aviso++);
         agregarAviso(aviso);
+
         Traza::evento("OperadorTorre", "Publica aviso: " + aviso);
     }
 }
@@ -56,10 +62,12 @@ vector<string> TorreControl::leerPanel() const {
 
 void TorreControl::incrementarOperaciones() {
     if (modo_carrera_) {
+        // Modo de fallo: carrera
         int temp = operaciones_;
         this_thread::yield();
         operaciones_ = temp + 1;
     } else {
+        // Modo correcto
         static mutex mtx_op;
         lock_guard<mutex> lock(mtx_op);
         operaciones_++;
